@@ -1,6 +1,9 @@
-
-
-venv/
+# Python ayarları
 __pycache__/
-.env
 *.pyc
+
+# Streamlit ve Gizli Bilgiler
+.streamlit/
+secrets.toml
+.env
+
