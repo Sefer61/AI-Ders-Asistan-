@@ -20,7 +20,7 @@ def ai_islemini_yurut(model_gorevi, metin):
         time.sleep(1)
        
         resp = client.models.generate_content(
-            model='models/gemini-1.5-flash-002', 
+            model="gemini-2.0-flash", 
             contents=f"{model_gorevi}: {metin[:10000]}"
         )
         return resp.text, None
