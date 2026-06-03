@@ -72,6 +72,13 @@ elif secim == "AI Asistan Modülü":
                 st.write("### 📝 Özet:", st.session_state.ozet)
                 st.write("### 🔑 Anahtar Kelimeler:")
                 st.markdown(st.session_state.anahtar_kelimeler)
+                
+                
+                if st.button("🔊 Özeti Seslendir"):
+                    with st.spinner("Ses dosyası hazırlanıyor..."):
+                        tts = gTTS(text=st.session_state.ozet, lang='tr')
+                        tts.save("ozet.mp3")
+                        st.audio("ozet.mp3", format="audio/mp3")
         
         with col2:
             if st.button("Quiz Hazırla"):
