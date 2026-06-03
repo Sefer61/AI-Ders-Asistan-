@@ -1,30 +1,29 @@
-# 🚀 Doğal Dil İşleme Kullanarak Yapay Zeka Destekli Ders Notu Özetleme Sistemi
+# 🚀 AI Ders Asistanı: Akıllı Özetleme Sistemi
 
-Bu proje, **Piri Reis Üniversitesi** Bilgisayar Programcılığı bölümü kapsamında, öğrencilerin karmaşık ve uzun ders içeriklerini saniyeler içinde analiz edip özetlemesi amacıyla geliştirilmiş bir **Yapay Zeka** çözümüdür.
+Doğal Dil İşleme (NLP) teknolojilerini kullanarak, akademik PDF dokümanlarını analiz eden ve içeriklerden anlamlı eğitim materyalleri (özet, quiz, anahtar kelime) türeten yapay zeka destekli bir asistan.
+
+## 🔗 Uygulamaya Erişim
+
+👉 **[Buraya Streamlit Uygulama Linkini Yapıştır]**
+
+## 💡 Proje Özeti
+
+Bu sistem, uzun ve karmaşık ders notlarını, **Doğal Dil İşleme (NLP)** modelleri aracılığıyla işleyerek **Yapay Zeka** destekli bir öğrenme deneyimine dönüştürür. Hedefimiz, öğrencinin ders notlarını saniyeler içinde anlamlı bir yapıya kavuşturup verimli bir çalışma süreci geçirmesini sağlamaktır.
+
+## 🛠️ Temel Özellikler
+
+- **NLP Destekli Özetleme:** Uzun metinleri yapay zeka ile 5 madde halinde akademik özetlere dönüştürür.
+- **Akademik Analiz:** İçerikteki en kritik 5 anahtar kelimeyi tespit ederek konunun merkezini belirler.
+- **Otomatik Quiz Üretimi:** Ders notlarından yapay zeka ile 5 adet çoktan seçmeli soru hazırlar.
+- **Sesli Erişim (TTS):** Hazırlanan özet metinlerini sesli olarak dinleme imkanı sunar.
+
+## ⚙️ Kullanılan Teknolojiler
+
+- **Yapay Zeka & NLP:** Groq (Llama 3) - Ultra hızlı ve güncel dil modeli.
+- **Arayüz:** Streamlit - Dinamik ve kullanıcı dostu dashboard.
+- **PDF İşleme:** pdfplumber - PDF dokümanlarından temiz metin çıkarımı.
+- **Seslendirme:** gTTS (Google Text-to-Speech)
 
 ---
 
-## 🛠 Kullanılan Teknolojiler
-
-Proje, güncel doğal dil işleme (NLP) kütüphaneleri ve performanslı bir web arayüzü üzerine inşa edilmiştir:
-
-- **Python 3.x**: Projenin ana mantığını oluşturan programlama dili.
-- **Streamlit**: Kullanıcı dostu, hızlı ve interaktif bir web arayüzü için tercih edilmiştir.
-- **NLP (Doğal Dil İşleme)**: Ders notlarındaki anahtar kelimeleri ve anlam bütünlüğünü yakalamak için geliştirilmiş algoritmalar.
-- **GCP API**: Veri işleme süreçlerinin optimize edilmesi ve hızlı yanıt süreleri için entegre edilmiştir.
-
-## 🎯 Projenin Temel Özellikleri
-
-- **Akıllı Özetleme:** Uzun ders notlarını orijinal anlamını kaybetmeden, en önemli noktalarıyla kısa ve öz hale getirir.
-- **Zaman Tasarrufu:** Sayfalarca süren metinleri saniyeler içinde analiz ederek akademik verimliliği artırır.
-- **Modern Arayüz:** Streamlit'in sağladığı esnek yapıyla, mobil uyumlu ve şık bir deneyim sunar.
-- **Hata Toleransı:** Yazım hatalarını ve yapısal bozuklukları minimize ederek temiz çıktı üretir.
-
-## 🚀 Nasıl Çalıştırılır?
-
-Projeyi kendi bilgisayarınızda ayağa kaldırmak için şu adımları izleyin:
-
-1. **Depoyu Klonlayın:**
-   ```bash
-   git clone [https://github.com/Sefer61/mesleki-proje.git](https://github.com/Sefer61/mesleki-proje.git)
-   ```
+_Geliştirici: Sefer Demircioğlu_

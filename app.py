@@ -1,13 +1,12 @@
 import streamlit as st
 import pdfplumber
-import re
 import time
-from google import genai
+from groq import Groq
 from gtts import gTTS
 
-# --- 1. AYAR (CLIENT BAĞLANTISI) ---
-
-client = genai.Client(api_key=st.secrets["GCP_API_KEY"], http_options={'api_version': 'v1'})
+# --- 1. AYAR (GROQ BAĞLANTISI) ---
+# Secrets üzerinden anahtarı alıyoruz
+client = Groq(api_key=st.secrets["GROQ_API_KEY"])
 
 # --- AYARLAR & SESSION STATE ---
 if 'ozet' not in st.session_state: st.session_state.ozet = None
@@ -17,17 +16,17 @@ if 'tam_metin' not in st.session_state: st.session_state.tam_metin = None
 
 def ai_islemini_yurut(model_gorevi, metin):
     try:
-        time.sleep(1)
-       
-        resp = client.models.generate_content(
-            model="gemini-2.0-flash", 
-            contents=f"{model_gorevi}: {metin[:10000]}"
+        # Groq API ile Llama3 modelini kullanıyoruz
+        chat_completion = client.chat.completions.create(
+            messages=[
+                {"role": "system", "content": "Sen profesyonel bir akademik asistansın."},
+                {"role": "user", "content": f"{model_gorevi}: {metin[:10000]}"}
+            ],
+            model="llama3-8b-8192", 
         )
-        return resp.text, None
+        return chat_completion.choices[0].message.content, None
     except Exception as e:
-        hata_mesaji = str(e)
-        if "429" in hata_mesaji: return None, "⚠️ Günlük limit doldu."
-        return None, f"Hata: {hata_mesaji}"
+        return None, f"Hata: {str(e)}"
 
 st.set_page_config(page_title="AI Ders Asistanı", layout="wide", page_icon="📚")
 st.sidebar.title("🛠️ Navigasyon")
@@ -38,15 +37,15 @@ if secim == "Ana Sayfa":
     st.title("🚀 AI Ders Asistanı Projesi")
     st.markdown("---")
     col1, col2, col3 = st.columns(3)
-    col1.metric("Model", "Gemini 1.5 Flash")
+    col1.metric("Model", "Llama 3 (Groq)")
     col2.metric("Dil", "Türkçe")
-    col3.metric("Durum", "Aktif/Stabil")
-    st.info("Hoş geldiniz")
+    col3.metric("Durum", "Aktif/Hızlı")
+    st.info("Hoş geldiniz - Sistem Groq altyapısına yükseltildi.")
     
     st.subheader("🛠️ Uygulama Özellikleri")
     features = {
         "📄 PDF İşleme": "pdfplumber ile hızlı metin çıkarımı.",
-        "🤖 Yapay Zeka": "Gemini ile özetleme, quiz ve anahtar kelime analizi.",
+        "🤖 Yapay Zeka": "Groq/Llama 3 ile ultra hızlı analiz.",
         "🔊 Seslendirme": "gTTS ile metinleri sese dönüştürme.",
         "⚡ Hata Yönetimi": "Sistem korumalı (Exception Handling) yapı."
     }
@@ -69,7 +68,7 @@ elif secim == "AI Asistan Modülü":
                 with st.spinner("Analiz ediliyor..."):
                     ozet, h1 = ai_islemini_yurut("Bu ders notunu 5 madde halinde özetle", st.session_state.tam_metin)
                     anahtar, h2 = ai_islemini_yurut("En önemli 5 anahtar kelimeyi virgülle listele", st.session_state.tam_metin)
-                    if h1 or h2: st.error("Hata oluştu.")
+                    if h1 or h2: st.error("API Hatası: " + (h1 or h2))
                     else: st.session_state.ozet, st.session_state.anahtar_kelimeler = ozet, anahtar
             
             if st.session_state.ozet:
