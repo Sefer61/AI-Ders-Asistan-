@@ -4,7 +4,7 @@ Doğal Dil İşleme (NLP) teknolojilerini kullanarak, akademik PDF dokümanları
 
 ## 🔗 Uygulamaya Erişim
 
-👉 **[Buraya Streamlit Uygulama Linkini Yapıştır]**
+👉 **https://rmvth3vpgytqfyut7xmrlj.streamlit.app**
 
 ## 💡 Proje Özeti
 
