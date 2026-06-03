@@ -22,7 +22,7 @@ def ai_islemini_yurut(model_gorevi, metin):
                 {"role": "system", "content": "Sen profesyonel bir akademik asistansın."},
                 {"role": "user", "content": f"{model_gorevi}: {metin[:10000]}"}
             ],
-            model="llama3-8b-8192", 
+            model="llama-3.3-70b-versatile", 
         )
         return chat_completion.choices[0].message.content, None
     except Exception as e:
@@ -40,7 +40,7 @@ if secim == "Ana Sayfa":
     col1.metric("Model", "Llama 3 (Groq)")
     col2.metric("Dil", "Türkçe")
     col3.metric("Durum", "Aktif/Hızlı")
-    st.info("Hoş geldiniz - Sistem Groq altyapısına yükseltildi.")
+    st.info("Hoş geldiniz ")
     
     st.subheader("🛠️ Uygulama Özellikleri")
     features = {

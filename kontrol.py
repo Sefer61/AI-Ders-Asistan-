@@ -13,7 +13,7 @@ def groq_model_kontrol():
     try:
         # Groq'ta kullanılan modelleri listeleyebiliriz veya 
         # doğrudan onaylanmış model isimlerini kullanabiliriz.
-        model_name = "llama3-8b-8192"
+        model_name = "llama-3.3-70b-versatile"
         print(f"Bağlantı başarılı. Kullanılan model: {model_name}")
         return model_name
     except Exception as e:
