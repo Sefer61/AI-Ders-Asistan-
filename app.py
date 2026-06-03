@@ -76,8 +76,16 @@ elif secim == "AI Asistan Modülü":
                 
                 if st.button("🔊 Özeti Seslendir"):
                     with st.spinner("Ses dosyası hazırlanıyor..."):
-                        temiz_ses_metni = st.session_state.ozet.replace("*", "").replace("#", "").replace("-", " ")
-                        tts = gTTS(text=st.session_state.ozet, lang='tr')
+                        # 1. Metni ses için 'temiz' hale getir (Sembolleri temizle)
+                        ses_icin_metin = st.session_state.ozet.replace("*", "").replace("#", "").replace("-", " ").replace("\n", ". ")
+                        
+                        # 2. Eski dosyayı temizle (Eğer varsa)
+                        import os
+                        if os.path.exists("ozet.mp3"):
+                            os.remove("ozet.mp3")
+                            
+                        # 3. Temiz metinle ses oluştur
+                        tts = gTTS(text=ses_icin_metin, lang='tr')
                         tts.save("ozet.mp3")
                         st.audio("ozet.mp3", format="audio/mp3")
         
