@@ -76,6 +76,7 @@ elif secim == "AI Asistan Modülü":
                 
                 if st.button("🔊 Özeti Seslendir"):
                     with st.spinner("Ses dosyası hazırlanıyor..."):
+                        temiz_ses_metni = st.session_state.ozet.replace("*", "").replace("#", "").replace("-", " ")
                         tts = gTTS(text=st.session_state.ozet, lang='tr')
                         tts.save("ozet.mp3")
                         st.audio("ozet.mp3", format="audio/mp3")
